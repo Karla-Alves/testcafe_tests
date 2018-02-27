@@ -1,7 +1,10 @@
 import { Selector } from 'testcafe';
 
 fixture `Logging in`
-    .page `https://karla0.testn.f4tech.com/slm`;
+    .page `https://karla0.testn.f4tech.com/slm`
+    // .afterEach(async t => {
+    //     await t.eval(() => localStorage.clear());
+    // })
 
     test('Open pages sidebar', async t =>{
         const sideIcon = Selector("#viewport > div > div > div.chr-NavigationHeader > div > div:nth-child(1) > div.chr-NavigationHeader-menuButtonTitleDiv > nav > button > div > span > span");
@@ -14,7 +17,7 @@ fixture `Logging in`
             .typeText('#j_password', 'Password')
             .click('#login-button')
             .click(sideIcon)
-            .wait(2000)
+            .wait(20000)
             .click(sidePagesIcon)
             .expect(sidePagesIcon).ok('it passed')
             .typeText(searchAllPages, 'Team Board')
