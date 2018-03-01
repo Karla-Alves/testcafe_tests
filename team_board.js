@@ -60,7 +60,7 @@ fixture `Team Board`
 
     // })
 
-    test('Team Board add, drag and delete new artifact', async t =>{
+    test('Team Board add US, setReady, setBlocked with a reason,drag and delete new artifact', async t =>{
         const addNewButton = Selector('span.smb-Button-children').withText('Add New')
         const workItemTypes = Selector('div.smb-Select-placeholderText').withText('Select Work Item Types...')
         const createUserStory = Selector('span.smb-DropdownItem-text').withText('User Story')
