@@ -75,19 +75,38 @@ fixture `Team Board`
         const setReady = Selector('.smb-Icon--ready')
         const setBlocked = Selector('.smb-Icon--blocked')
         const setBlockedReason = Selector('.chr-EditorsStringEditor')
+        const fieldPicker = Selector('.chr-FieldPickerButton')
+        const checkboxField = Selector('div.smb-Checkbox').nth(5)
+        const applyField = Selector('.smb-Button-children').withText('Apply')
 
 
         await t
+            //create an User Story        
             .click(addNewButton)
             .click(workItemTypes)
             .click(createUserStory)
             .typeText(enterName, 'User Story 1')
             .click(createButton)
+
+            //Drag User Story
             .drag(dragUs, 360,0,{offsetX: 10, offsetY:10})
             .wait(2000)
+
+            //Set User Story as Ready
             .click(setReady)
+
+            //Set User Story as Blocked with Blocked Reason
             .click(setBlocked)
             .typeText(setBlockedReason, 'Test')
+
+            //Open Field Picker and add a field
+            .click(fieldPicker)
+            .wait(2000)
+            .click(checkboxField)
+            .wait(2000)
+            .click(applyField)
+
+            //Open qdp and Delete User story
             .click(formattedId)
             .click(qdpMoreButton)
             .click(qdpDelete)
