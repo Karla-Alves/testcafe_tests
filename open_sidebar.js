@@ -8,20 +8,23 @@ var login = async t => {
 }
 
 fixture `Opening Sidebar`
-    .page(`https://karla0.testn.f4tech.com/slm`)  
+    .page(`https://karla1.testn.f4tech.com/slm`)  
     .beforeEach(login)
        
 //click to open sidebar
-    test('Open sidebar', async t =>{   
-        const sideIcon = Selector("#viewport > div > div > div.chr-NavigationHeader > div > div:nth-child(1) > div.chr-NavigationHeader-menuButtonTitleDiv > nav > button > div > span > span");
-        const sideBardTitle = Selector("h1.chr-ComponentsSideBar-headerTitle")
-
+    test('Open sidebar', async t =>{ 
+        const sideIcon = Selector('.smb-TopBarIconButton')
+        const sideBardTitle = Selector('h1.chr-ComponentsSideBar-headerTitle')
+        
         if(await sideIcon.exists){
-            await t.click(sideIcon);
-            await t.wait(20000);
-            await t.expect(sideBardTitle.exists).ok();
+            await t
+                .wait(2000)
+                .click(sideIcon)
+                .wait(20000)
+                 .expect(sideBardTitle.exists).ok()
+            
         } else {
-            await t.expect(false).ok('it failed');    
+            await t.expect(true).ok('it passed');    
         }
         
     })    

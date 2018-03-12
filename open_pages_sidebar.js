@@ -1,16 +1,21 @@
 import { Selector } from 'testcafe';
 
-fixture `Logging in`
-    .page `https://karla0.testn.f4tech.com/slm`;
+var login = async t => {
+    await t
+        .typeText('#j_username', 'test@rallydev.com')
+        .typeText('#j_password', 'Password')
+        .click('#login-button')        
+}
+    
+fixture `Open Pages Sidebar`
+    .page(`https://karla1.testn.f4tech.com/#/20330408691d/teamboard`)  
+    .beforeEach(login)
 
     test('Open pages sidebar', async t =>{
         const sideIcon = Selector("#viewport > div > div > div.chr-NavigationHeader > div > div:nth-child(1) > div.chr-NavigationHeader-menuButtonTitleDiv > nav > button > div > span > span");
         const sidePagesIcon = Selector('.chr-NavigationSidebarPagesHeader-ellipsisButton')
 
         await t
-            .typeText('#j_username', 'test@rallydev.com')
-            .typeText('#j_password', 'Password')
-            .click('#login-button')
             .click(sideIcon)
             .wait(2000)
             .click(sidePagesIcon)
