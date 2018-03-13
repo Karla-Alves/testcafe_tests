@@ -25,8 +25,8 @@ fixture `User Stories Page`
             .typeText(newUsNameEditor, 'New US')
             .click('.chr-QuickDetailEntityFooter-saveButton')
             .wait(2000)
-            
-
+            .click('.smb-Icon--cancel')
+            .expect({input:'New US'}).eql({input:'New US'}, 'this assertion will pass')       
     })
 
     
