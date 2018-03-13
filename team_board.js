@@ -9,7 +9,7 @@ var login = async t => {
 }
     
 fixture `Team Board`
-    .page(`https://karla1.testn.f4tech.com/#/20330408691d/teamboard`)  
+    .page(`https://karla0.testn.f4tech.com/#/20330408691d/teamboard`)  
     .beforeEach(login)
     .afterEach(async t => {
         await t.eval(() => localStorage.clear());
