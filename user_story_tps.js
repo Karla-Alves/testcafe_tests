@@ -98,6 +98,8 @@ fixture `User Stories Page`
         const qdpDelete = Selector('.smb-DropdownItem-text').withText('Delete')
         const flairConfirmDeletion = Selector('.smb-Button-children').withText('Delete')
 
+        const scheduleState = Selector('.state-table div').withText('P')
+
         await t
             .hover('.actionsMenu')
             .click(inlineAddStory)
@@ -111,8 +113,7 @@ fixture `User Stories Page`
             .click('#nameTemplate')
             .typeText('#nameTemplate', 'New Name')
             .click(applyButton)
-            .hover('.state-table')
-            .click('.state-table')
+            .click(scheduleState)
             .wait(2000)
             .click(saveChanges)
             .click(formattedId)
@@ -121,3 +122,21 @@ fixture `User Stories Page`
             .click(flairConfirmDeletion)
 
     })
+
+    // test('Add Child Story', async t =>{
+    //     const inlineAddStory = Selector(value =>{
+    //         return document.getElementById('inline')
+    //     })
+    //     const inlineAddName = Selector('.editrow').nth(4)
+
+    //     await t
+    //         .hover('.actionsMenu')
+    //         .click(inlineAddStory)
+    //         .wait(2000)
+    //         .typeText(inlineAddName, 'US A')
+    //         .wait(2000)
+    //         .click('.save')
+    //         .click('.sprite-new-story-child')
+
+
+    // })
