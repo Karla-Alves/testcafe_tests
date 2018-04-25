@@ -8,16 +8,16 @@ var login = async t => {
 }
     
 fixture `Pinning Team Board`
-    .page(`https://karla1.testn.f4tech.com/#/20330408691d/teamboard`)  
+    .page(`https://karla0.testn.f4tech.com/#/20330408691d/teamboard`)  
     .beforeEach(login)
     // .afterEach(async t => {
     //     await t.eval(() => localStorage.clear());
     // })
 
     test('Pinning Team Board', async t =>{
-        const sideIcon = Selector("#viewport > div > div > div.chr-NavigationHeader > div > div:nth-child(1) > div.chr-NavigationHeader-menuButtonTitleDiv > nav > button > div > span > span");
+        const sideIcon = Selector('.smb-TopBarIconButton')
         const sidePagesIcon = Selector('.chr-NavigationSidebarPagesHeader-ellipsisButton')
-        const searchAllPages = Selector('#viewport > div > nav.chr-ComponentsSideBar.chr-NavigationSubmenuContainer > div.chr-NavigationSubmenuContainer-searchWrapper > div > div')
+        const searchAllPages = Selector('.smb-Validated.smb-SearchInput').nth(0)
         const pinIcon = Selector('.chr-NavigationSubmenuPageSection-pinIcon')
 
         await t

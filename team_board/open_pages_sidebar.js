@@ -8,7 +8,7 @@ var login = async t => {
 }
     
 fixture `Open Pages Sidebar`
-    .page(`https://karla1.testn.f4tech.com/#/20330408691d/teamboard`)  
+    .page(`https://karla0.testn.f4tech.com/#/20330408691d/teamboard`)  
     .beforeEach(login)
 
     test('Open pages sidebar', async t =>{
