@@ -1,12 +1,13 @@
 import { Selector, ok, Role } from 'testcafe';
+import minimist from 'minimist';
 //import { reset } from 'chalk';
 
 var login = async t => {
     await t
         .typeText('#j_username', 'test@rallydev.com')
         .typeText('#j_password', 'Password')
-        .click('#login-button')        
-}
+        .click('#login-button') 
+}   
     
 fixture `Team Board`
     .page(`https://karla0.testn.f4tech.com/#/20330408691d/teamboard`)  
@@ -20,7 +21,7 @@ fixture `Team Board`
     })
 
     test('Team Board settings, adding New Flow State', async t =>{
-        const settingsButton = Selector('.chr-TeamBoardPage-settingsViewButton')
+        const settingsButton = Selector('button.smb-Button.smb-Button--icon.smb-Button--sm.chr-TeamBoardPage-settingsViewButton')
         const addFlowState = Selector('.chr-TeamBoardSettings-addColumnText')
         const nameContainer = Selector('.chr-TeamBoardSettingsColumn-nameContainer input')
         const saveButton = Selector('button.smb-Button.smb-Button--primary.smb-Button--sm')
@@ -29,13 +30,12 @@ fixture `Team Board`
         const uniqName = "new Flow " + new Date().getTime();
         await t
             .click(settingsButton)
-            //.wait(2000)
             .click(addFlowState)
             .expect(addFlowState).ok('it passed')
             .typeText(nameContainer, uniqName)
             .click(saveButton)
-            //.wait(2000)
             .expect(nameContainer.value).eql(uniqName)
+            .wait(2000)
             .click(dropdownItemFlowState)
             .click(deleteFlowState)
             .expect(deleteFlowState).ok('it passed')

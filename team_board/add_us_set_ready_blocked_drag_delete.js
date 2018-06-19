@@ -21,6 +21,7 @@ fixture `Team Board`
     
     test('Team Board add US, setReady, setBlocked with a reason,drag and delete new artifact', async t =>{
             const addNewButton = Selector('span.smb-Button-children').withText('Add New')
+            //const addNewButton = Selector('button.chr-ToolbarAddNewButton-addNewButton')
             const workItemTypes = Selector('div.smb-Select-placeholderText').withText('Select Work Item Types...')
             const createUserStory = Selector('span.smb-DropdownItem-text').withText('User Story')
             const enterName = Selector('.smb-TextInput--iconPlacementEnd')
@@ -28,7 +29,7 @@ fixture `Team Board`
             //const createdUs = Selector('.chr-BoardField--name').withText('User Story 1')
             const dragUs = Selector('.chr-BoardField').withText('User Story 1')
             const formattedId = Selector('.chr-FormattedId')
-            const qdpMoreButton = Selector('.chr-QuickDetailActionsMenu')
+            const qdpMoreButton = Selector('.smb-DropdownMenu').nth(3)
             const qdpDelete = Selector('.smb-DropdownItem-text').withText('Delete')
             const flairConfirmDeletion = Selector('.smb-Button-children').withText('Delete')
             const setReady = Selector('.smb-Icon--ready')
@@ -37,6 +38,7 @@ fixture `Team Board`
             const fieldPicker = Selector('.chr-FieldPickerButton')
             const checkboxField = Selector('div.smb-Checkbox').nth(5)
             const applyField = Selector('.smb-Button-children').withText('Apply')
+            const closeflair = Selector('.smb-Alert-closeButton')
 
 
             await t
@@ -46,6 +48,7 @@ fixture `Team Board`
                 .click(createUserStory)
                 .typeText(enterName, 'User Story 1')
                 .click(createButton)
+                .click(closeflair)
                 .expect({a:'User Story 1'}).eql({a:'User Story 1'}, 'this assertion will pass')
 
                 //Drag User Story
