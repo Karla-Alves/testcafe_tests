@@ -23,7 +23,7 @@ test('Team Board Swimlane', async t =>{
     const groupByButton = Selector('#TOOLBAR_GROUP_BY_TRAY-trigger')
     const toolbarTray = Selector('#TOOLBAR_GROUP_BY_TRAY')
     const groupByDropdown = Selector('#TOOLBAR_GROUP_BY_TRAY > div > label > div > div > div')
-    const groupByDropdownOptions = Selector('#TOOLBAR_GROUP_BY_TRAY > div > label > div > div.smb-DropdownList-listContentWrapper')
+    const groupByDropdownOptions = Selector('.chr-ToolbarGroupByTray-groupByField .smb-DropdownList-list .smb-DropdownItem')[0]
 
     await t
         if(await toolbarTray.exists){
