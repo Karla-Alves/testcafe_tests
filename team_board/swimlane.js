@@ -23,7 +23,8 @@ test('Team Board Swimlane', async t =>{
     const groupByButton = Selector('#TOOLBAR_GROUP_BY_TRAY-trigger')
     const toolbarTray = Selector('#TOOLBAR_GROUP_BY_TRAY')
     const groupByDropdown = Selector('.chr-ToolbarGroupByTray-groupByField .smb-DropdownList')
-    const groupByDropdownOptions = Selector('.chr-ToolbarGroupByTray-groupByField .smb-DropdownList-list .smb-DropdownItem').nth(0)
+    const groupByDropdownOptionsBlocked = Selector('.chr-ToolbarGroupByTray-groupByField .smb-DropdownList-list .smb-DropdownItem').nth(1)
+
 
     await t
         if(await toolbarTray.exists){
@@ -33,7 +34,9 @@ test('Team Board Swimlane', async t =>{
             await t
                 .click(groupByButton)
                 .click(groupByDropdown)
-                .click(groupByDropdownOptions)
+                .click(groupByDropdownOptionsBlocked)
+                .wait(200)
+                .expect({span:'Blocked'}).eql({span:'Blocked'}, 'this assertion will pass')
         }
     
         
