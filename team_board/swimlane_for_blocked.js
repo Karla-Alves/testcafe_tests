@@ -1,5 +1,6 @@
 import { Selector, ok, Role } from 'testcafe';
 import { reset } from 'chalk';
+import Cookies from 'js-cookie';
 
 var login = async t => {
     await t
@@ -16,6 +17,10 @@ fixture `Team Board Swimlane options`
     // })
 
     .afterEach(async t => {
+        const allCookies = Cookies.get();
+        for(c in allCookies){
+            Cookies.remove(c.name);
+        }
         await t.eval(() => localStorage.clear());
     })
 

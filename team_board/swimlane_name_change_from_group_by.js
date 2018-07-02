@@ -33,7 +33,7 @@ test('Team Board Group By button name change to Swimlanes and Group by name chan
                 .expect(swimlaneByButtonLabel.textContent).eql('Swimlane By')         
         }else{
             await t
-                .click(groupByButton)
+                .click(groupByButton) 
                 .expect(swimlaneByButtonLabel.textContent).eql('Swimlane By')
         }       
 })    
@@ -54,29 +54,57 @@ test('Work Views still has "Group By" button and "GROUP BY" label for dropdown',
 
     await t
         .navigateTo(`https://karla0.testn.f4tech.com/#/228928406146d/workviews`)
-        .wait(2000)
+        .wait(200)
 
         //If a project is picked do nothing, otherwise pick a project
-        if(await projectHasBeenSelected.exists){
-            await t
-                //.click(projectPicker)
-        }else{
-            await t
-                .click(projectPicker)
-                .click(projectBrowser)
-                .click(projectCheckbox)
-                .click(projectDoneButton)
-        }
+        // if(await projectHasBeenSelected.exists){
+        //     await t
+        //         //.click(projectPicker)
+        //         .expect(true).ok('it passed')
+        // }else{
+        //     await t
+        //         .click(projectPicker)
+        //         .click(projectBrowser)
+        //         .click(projectCheckbox)
+        //         .click(projectDoneButton)
+        // }
         
-        //If a work item is already chosen, do nothing, otherwise pick a work item
-        if(await workItemTypesBeenSelected.exists){
+//         //If a work item is already chosen, do nothing, otherwise pick a work item
+//         if(await workItemTypesBeenSelected.exists){
+//             await t
+//                 //.click(workItemTypesPicker)
+//                 .expect(true).ok('it passed')
+//         }else{
+//             await t
+//                 .click(workItemTypesPicker)
+//                 .click(workItemTypesDropdown)
+//         } 
+
+//         //checking Group By button
+//         if(await toolbarTray.exists){
+//             await t
+//                 .expect(groupByButton.textContent).eql('Group By')         
+//         }else{
+//             await t
+//                 .click(groupByButton)
+//                 .expect(groupByButtonLabel.textContent).eql('Group By')
+//         }      
+// })
+
+        //If a project and a work item is already chosen, do nothing, otherwise pick a work item
+        if(await projectHasBeenSelected.exists && workItemTypesBeenSelected.exists){
             await t
-                //.click(workItemTypesPicker)
+             //.click(projectPicker)
+             .expect(true).ok('it passed')
         }else{
             await t
-                .click(workItemTypesPicker)
-                .click(workItemTypesDropdown)
-        } 
+            .click(projectPicker)
+            .click(projectBrowser)
+            .click(projectCheckbox)
+            .click(projectDoneButton)
+            .click(workItemTypesPicker)
+            .click(workItemTypesDropdown)
+        }
 
         //checking Group By button
         if(await toolbarTray.exists){
@@ -87,4 +115,5 @@ test('Work Views still has "Group By" button and "GROUP BY" label for dropdown',
                 .click(groupByButton)
                 .expect(groupByButtonLabel.textContent).eql('Group By')
         }      
+
 })
