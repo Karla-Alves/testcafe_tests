@@ -43,7 +43,6 @@ test('Work Views still has "Group By" button and "GROUP BY" label for dropdown',
     const projectBrowser = Selector('.smb-DropdownList-footer .chr-ProjectPickerSelectContainer-footerButton')
     const projectCheckbox = Selector('.smb-DataTable-wrapper .smb-TableBody .smb-TableCell--checkbox .chr-ProjectPickerModal-checkbox') 
     const projectHasBeenSelected = Selector('.chr-ToolbarMultiProjectFilterTray-fieldContainer .chr-ProjectPickerSelect .smb-Select-selectedValue')
-    //const projectCheckboxEnabled = Selector('.smb-DataTable-wrapper .smb-TableBody .smb-TableCell--checkbox .is-checked')
     const projectDoneButton = Selector('.smb-PanelFooter .chr-ProjectPickerModal-doneButton .smb-Button-children')
     const workItemTypesPicker = Selector('.chr-ToolbarMultiProjectFilterTray-fieldContainer .chr-MultiProjectFilterTrayTypeFilter .smb-Select-trigger')
     const workItemTypesDropdown = Selector('.smb-DropdownList-listContentWrapper .smb-DropdownList-list .smb-Checkbox').nth(2)
@@ -56,45 +55,9 @@ test('Work Views still has "Group By" button and "GROUP BY" label for dropdown',
         .navigateTo(`https://karla0.testn.f4tech.com/#/228928406146d/workviews`)
         .wait(200)
 
-        //If a project is picked do nothing, otherwise pick a project
-        // if(await projectHasBeenSelected.exists){
-        //     await t
-        //         //.click(projectPicker)
-        //         .expect(true).ok('it passed')
-        // }else{
-        //     await t
-        //         .click(projectPicker)
-        //         .click(projectBrowser)
-        //         .click(projectCheckbox)
-        //         .click(projectDoneButton)
-        // }
-        
-//         //If a work item is already chosen, do nothing, otherwise pick a work item
-//         if(await workItemTypesBeenSelected.exists){
-//             await t
-//                 //.click(workItemTypesPicker)
-//                 .expect(true).ok('it passed')
-//         }else{
-//             await t
-//                 .click(workItemTypesPicker)
-//                 .click(workItemTypesDropdown)
-//         } 
-
-//         //checking Group By button
-//         if(await toolbarTray.exists){
-//             await t
-//                 .expect(groupByButton.textContent).eql('Group By')         
-//         }else{
-//             await t
-//                 .click(groupByButton)
-//                 .expect(groupByButtonLabel.textContent).eql('Group By')
-//         }      
-// })
-
         //If a project and a work item is already chosen, do nothing, otherwise pick a work item
         if(await projectHasBeenSelected.exists && workItemTypesBeenSelected.exists){
             await t
-             //.click(projectPicker)
              .expect(true).ok('it passed')
         }else{
             await t
