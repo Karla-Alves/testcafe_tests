@@ -25,10 +25,10 @@ fixture `Team Board Swimlane options`
     })
 
 test('Team Board Swimlane for a TS set as blocked', async t =>{
-    const groupByButton = Selector('#TOOLBAR_GROUP_BY_TRAY-trigger')
+    const swimlanesButton = Selector('#TOOLBAR_GROUP_BY_TRAY-trigger')
     const toolbarTray = Selector('#TOOLBAR_GROUP_BY_TRAY')
-    const groupByDropdown = Selector('.chr-ToolbarGroupByTray-groupByField .smb-DropdownList')
-    const groupByDropdownOptionsBlocked = Selector('.chr-ToolbarGroupByTray-groupByField .smb-DropdownList-list .smb-DropdownItem').nth(1)
+    const swimlaneByDropdown = Selector('.chr-ToolbarGroupByTray-groupByField .smb-DropdownList')
+    const swimlaneByDropdownOptionsBlocked = Selector('.chr-ToolbarGroupByTray-groupByField .smb-DropdownList-list .smb-DropdownItem').nth(1)
     const addNewButton = Selector('#TOOLBAR_ADD_NEW_TRAY-trigger .chr-ToolbarAddNewButton-addNewButton')
     const workItemTypes = Selector('.chr-ToolbarAddNewTray-field .chr-ToolbarAddNewTray-workItemTypeDropdown')
     const workItemTypesDropdownTestSet = Selector('.smb-DropdownList-listContentWrapper ,smb-DropdownItem')
@@ -50,14 +50,16 @@ test('Team Board Swimlane for a TS set as blocked', async t =>{
     const deleteButtonConfirmation = Selector('.smb-PanelFooter .smb-Button')
 
     await t
+        
         if(await toolbarTray.exists){
             await t
                 .expect(true).ok('it passed')
         }else{
+            //set a swimlane by to 'Blocked'
             await t
-                .click(groupByButton)
-                .click(groupByDropdown)
-                .click(groupByDropdownOptionsBlocked)
+                .click(swimlanesButton)
+                .click(swimlaneByDropdown)
+                .click(swimlaneByDropdownOptionsBlocked)
                 .wait(200)
                 .expect({span:'Blocked'}).eql({span:'Blocked'}, 'this assertion will pass')
 
